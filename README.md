@@ -2,6 +2,12 @@
 
 A modern GIF search application built with **Angular 22**, **TypeScript**, and the **GIPHY API**. Explore trending GIFs, search for your favorite animations, and revisit your search history.
 
+## Live Demo
+
+**Production:** [https://gifs-app-angular-one.vercel.app](https://gifs-app-angular-one.vercel.app)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/)
+
 ## Screenshots
 
 ### Trending GIFs
@@ -46,29 +52,42 @@ Access previous searches and revisit your favorite topics.
 | Tailwind CSS 4 | Styling |
 | GIPHY API | GIF data provider |
 | Local Storage | Search history persistence |
+| Node.js | Environment configuration script |
+| Vercel | Deployment and hosting |
+| GitHub | Source code management |
 
 ## Project Structure
 
 ```text
-src/
-├── app/
-│   ├── gifs/
-│   │   ├── components/
-│   │   │   ├── gif-list/
-│   │   │   └── side-menu/
-│   │   ├── interfaces/
-│   │   ├── mapper/
-│   │   ├── pages/
-│   │   │   ├── dashboard-page/
-│   │   │   ├── gif-history/
-│   │   │   ├── search-page/
-│   │   │   └── trending-page/
-│   │   └── services/
-│   ├── shared/
-│   │   └── services/
-│   ├── app.config.ts
-│   └── app.routes.ts
-└── environments/
+gifs-app-angular/
+├── docs/
+│   └── screenshots/
+├── scripts/
+│   └── set-env.js
+├── src/
+│   ├── app/
+│   │   ├── gifs/
+│   │   │   ├── components/
+│   │   │   │   ├── gif-list/
+│   │   │   │   └── side-menu/
+│   │   │   ├── interfaces/
+│   │   │   ├── mapper/
+│   │   │   ├── pages/
+│   │   │   │   ├── dashboard-page/
+│   │   │   │   ├── gif-history/
+│   │   │   │   ├── search-page/
+│   │   │   │   └── trending-page/
+│   │   │   └── services/
+│   │   ├── shared/
+│   │   │   └── services/
+│   │   ├── app.config.ts
+│   │   └── app.routes.ts
+│   └── environments/
+│       ├── environment.example.ts
+│       └── environment.development.example.ts
+├── angular.json
+├── package.json
+└── README.md
 ```
 
 ## Architecture Highlights
@@ -79,6 +98,7 @@ src/
 - **Signals:** Manage reactive application state.
 - **Computed Signals:** Derive data such as grouped trending GIFs and search history keys.
 - **Lazy Loading:** Improve application loading by loading pages on demand.
+- **Environment Configuration:** Generate production environment settings dynamically using a Node.js script.
 
 ## Getting Started
 
@@ -147,14 +167,64 @@ npm start
 
 Open your browser at:
 
+```text
 http://localhost:4200/
+```
+
+### 6. Build for production
+
+The production build uses the `GIPHY_API_KEY` environment variable to generate the production environment configuration.
+
+**PowerShell:**
+
+```powershell
+$env:GIPHY_API_KEY = "YOUR_GIPHY_API_KEY"
+
+npm run build
+```
+
+The `scripts/set-env.js` script generates `src/environments/environment.ts` before Angular executes the production build.
+
+The generated environment file is excluded from Git.
+
+## Deployment
+
+The application is deployed using [Vercel](https://vercel.com/).
+
+**Production URL:**
+
+[https://gifs-app-angular-one.vercel.app](https://gifs-app-angular-one.vercel.app)
+
+### Deployment Configuration
+
+- **Git Repository:** `freyderdev/gifs-app-angular`
+- **Production Branch:** `main`
+- **Framework Preset:** Angular
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist/gifs-app/browser`
+
+### Environment Variables
+
+Configure the following environment variable in Vercel:
+
+| Variable | Description |
+|---|---|
+| `GIPHY_API_KEY` | GIPHY API Key used during production builds |
+
+Enable the variable for the **Production** and **Preview** environments.
+
+### Continuous Deployment
+
+Vercel is connected to the GitHub repository.
+
+Every new push to the `main` branch triggers an automatic production deployment.
 
 ## Available Scripts
 
 | Command | Description |
 |---|---|
 | `npm start` | Start the development server |
-| `npm run build` | Build the production application |
+| `npm run build` | Generate the production environment and build the application |
 | `npm run watch` | Build and watch for changes |
 | `npm test` | Run unit tests |
 
