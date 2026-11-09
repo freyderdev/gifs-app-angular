@@ -2,6 +2,26 @@
 
 A modern GIF search application built with **Angular 22**, **TypeScript**, and the **GIPHY API**. Explore trending GIFs, search for your favorite animations, and revisit your search history.
 
+## Screenshots
+
+### Trending GIFs
+
+Explore the most popular GIFs with an infinite scrolling experience.
+
+![Trending GIFs](docs/screenshots/dashboard.png)
+
+### GIF Search
+
+Search for GIFs using keywords and explore the results.
+
+![GIF Search](docs/screenshots/search.png)
+
+### Search History
+
+Access previous searches and revisit your favorite topics.
+
+![Search History](docs/screenshots/history.png)
+
 ## Features
 
 - **Trending GIFs:** Explore the most popular GIFs using the GIPHY Trending API.
@@ -51,7 +71,7 @@ src/
 └── environments/
 ```
 
-### Architecture Highlights
+## Architecture Highlights
 
 - **Services:** Centralize GIF API requests and application state.
 - **Interfaces:** Define TypeScript contracts for GIF and GIPHY responses.
@@ -127,9 +147,7 @@ npm start
 
 Open your browser at:
 
-```text
 http://localhost:4200/
-```
 
 ## Available Scripts
 
