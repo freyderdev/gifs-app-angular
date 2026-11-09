@@ -1,59 +1,161 @@
-# GifsApp
+# Gifs App – Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+A modern GIF search application built with **Angular 22**, **TypeScript**, and the **GIPHY API**. Explore trending GIFs, search for your favorite animations, and revisit your search history.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Trending GIFs:** Explore the most popular GIFs using the GIPHY Trending API.
+- **GIF Search:** Search for GIFs by keywords.
+- **Search History:** Keep track of previous searches.
+- **Persistent Storage:** Search history is saved using browser Local Storage.
+- **Infinite Scrolling:** Automatically load more trending GIFs as you scroll.
+- **Lazy Loading:** Load application pages on demand using Angular Router.
+- **Responsive Interface:** Modern interface styled with Tailwind CSS.
+- **Scroll Position Restoration:** Preserve the scrolling position when navigating between pages.
 
-```bash
-ng serve
+## Technologies
+
+| Technology | Purpose |
+|---|---|
+| Angular 22 | Frontend framework |
+| TypeScript | Programming language |
+| RxJS | Reactive programming and HTTP streams |
+| Angular Signals | Reactive state management |
+| Angular Router | Application navigation |
+| HttpClient | HTTP communication |
+| Tailwind CSS 4 | Styling |
+| GIPHY API | GIF data provider |
+| Local Storage | Search history persistence |
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── gifs/
+│   │   ├── components/
+│   │   │   ├── gif-list/
+│   │   │   └── side-menu/
+│   │   ├── interfaces/
+│   │   ├── mapper/
+│   │   ├── pages/
+│   │   │   ├── dashboard-page/
+│   │   │   ├── gif-history/
+│   │   │   ├── search-page/
+│   │   │   └── trending-page/
+│   │   └── services/
+│   ├── shared/
+│   │   └── services/
+│   ├── app.config.ts
+│   └── app.routes.ts
+└── environments/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Architecture Highlights
 
-## Code scaffolding
+- **Services:** Centralize GIF API requests and application state.
+- **Interfaces:** Define TypeScript contracts for GIF and GIPHY responses.
+- **Mapper:** Transform GIPHY API responses into application models.
+- **Signals:** Manage reactive application state.
+- **Computed Signals:** Derive data such as grouped trending GIFs and search history keys.
+- **Lazy Loading:** Improve application loading by loading pages on demand.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting Started
 
-```bash
-ng generate component component-name
-```
+### Prerequisites
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Node.js
+- npm
+- Angular CLI (optional, since the project includes Angular CLI as a dependency)
+- A GIPHY API Key
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 1. Clone the repository
 
 ```bash
-ng test
+git clone https://github.com/freyderdev/gifs-app-angular.git
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 2. Navigate to the project directory
 
 ```bash
-ng e2e
+cd gifs-app-angular
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 3. Install dependencies
 
-## Additional Resources
+```bash
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 4. Configure the GIPHY API Key
+
+Create your own API Key at [GIPHY Developers](https://developers.giphy.com/).
+
+The environment configuration templates are located in:
+
+```text
+src/environments/
+├── environment.example.ts
+└── environment.development.example.ts
+```
+
+Copy the example files to create your local environment configurations.
+
+**PowerShell:**
+
+```powershell
+Copy-Item src/environments/environment.example.ts src/environments/environment.ts
+
+Copy-Item src/environments/environment.development.example.ts src/environments/environment.development.ts
+```
+
+Open both newly created files and replace:
+
+```typescript
+giphyApikey: 'YOUR_GIPHY_API_KEY',
+```
+
+with your own GIPHY API Key.
+
+**Important:** Environment files containing local API credentials are excluded from Git. Never commit your personal API Key. Since this is a frontend application, API keys are visible to browser users; configure appropriate restrictions in your GIPHY developer dashboard.
+
+### 5. Run the development server
+
+```bash
+npm start
+```
+
+Open your browser at:
+
+```text
+http://localhost:4200/
+```
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm start` | Start the development server |
+| `npm run build` | Build the production application |
+| `npm run watch` | Build and watch for changes |
+| `npm test` | Run unit tests |
+
+## API Reference
+
+This application uses the [GIPHY API](https://developers.giphy.com/docs/api/).
+
+Endpoints used:
+
+- **Trending GIFs:** `/gifs/trending`
+- **Search GIFs:** `/gifs/search`
+
+## Author
+
+**Freyder Dev**
+
+- GitHub: [@freyderdev](https://github.com/freyderdev)
+- Repository: [gifs-app-angular](https://github.com/freyderdev/gifs-app-angular)
+
+---
+
+*Developed as part of my continuous learning journey with Angular and modern frontend development.*
